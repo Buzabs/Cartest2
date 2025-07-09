@@ -8,8 +8,8 @@ sprite_2d.tscn::PackedScene::1550953595117257300::1752057966::0::1::::<><><>0<>0
 test_scene.tscn::PackedScene::5765386544544841452::1752057966::0::1::::<><><>0<>0<><>::uid://wdj8j4d4bxpc::::res://Scenes/sprite_2d.tscn<>uid://dee5fjjx4cbtt::::res://Sprites/Tilemaps/Racetrack/basic-racetrack.png
 trail.gd::GDScript/GDScript::8554070866787735564::1752057706::0::1::::<>Line2D<><>0<>0<><>::
 ::res://Sprites/::1752057715
-::res://Sprites/Cars/::1752057994
-CarTuah.png::CompressedTexture2D::8732066158944952110::1752057994::1752058031::1::::<><><>0<>0<>4b85a150ffbaec8079678c484454f0bd<>res://.godot/imported/CarTuah.png-b345eb4f0fb31d0d9bab7aa163c424d5.ctex::
+::res://Sprites/Cars/::1752058031
+CarTuah.png::CompressedTexture2D::8732066158944952110::1752057994::1752058158::1::::<><><>0<>0<>4b85a150ffbaec8079678c484454f0bd<>res://.godot/imported/CarTuah.png-b345eb4f0fb31d0d9bab7aa163c424d5.ctex::
 temp-car.png::CompressedTexture2D/CompressedTexture2D::6527180053683720707::1752057706::1752057958::1::::<><><>0<>0<>d57be24e3d0bcb664fb40f12dddabddb<>res://.godot/imported/temp-car.png-5d35a2104e55e712b0a50606f2ce33f0.ctex::
 ::res://Sprites/Tilemaps/::1752057715
 ::res://Sprites/Tilemaps/Racetrack/::1752057958

@@ -1,2 +1,4 @@
 res://Scenes/sprite_2d.tscn
 res://Scenes/test_scene.tscn
+res://Scenes/car2.tscn
+res://Scenes/movement.gd

@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://dr8i3dgs87atf"]
+
+[ext_resource type="Script" uid="uid://dt150cgkkt0b0" path="res://Scenes/movement.gd" id="1_g3uxq"]
+[ext_resource type="Texture2D" uid="uid://dwn44bcng11o1" path="res://Sprites/Cars/CarTuah.png" id="2_g3uxq"]
+[ext_resource type="Script" uid="uid://dt4wkd2oqxstg" path="res://Scenes/trail.gd" id="3_ueoit"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_obltv"]
+height = 32.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2awta"]
+atlas = ExtResource("2_g3uxq")
+region = Rect2(0, 0, 33, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ueoit"]
+atlas = ExtResource("2_g3uxq")
+region = Rect2(33, 0, 33, 37)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jkf0a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2awta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ueoit")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_q6x4y"]
+colors = PackedColorArray(0.0980392, 0.0980392, 0.0980392, 0, 0.099986, 0.099986, 0.099986, 1)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_g3uxq")
+acc = 300
+decc = 400
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_obltv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_jkf0a")
+frame = 1
+frame_progress = 0.500772
+
+[node name="Point" type="Node2D" parent="AnimatedSprite2D"]
+show_behind_parent = true
+position = Vector2(-7, 9)
+
+[node name="Line2D" type="Line2D" parent="AnimatedSprite2D/Point"]
+show_behind_parent = true
+width = 3.0
+default_color = Color(0.165656, 0.165656, 0.165656, 1)
+gradient = SubResource("Gradient_q6x4y")
+script = ExtResource("3_ueoit")
+
+[node name="Point2" type="Node2D" parent="AnimatedSprite2D"]
+show_behind_parent = true
+position = Vector2(7, 9)
+
+[node name="Line2D2" type="Line2D" parent="AnimatedSprite2D/Point2"]
+show_behind_parent = true
+position = Vector2(-14, 0)
+width = 3.0
+default_color = Color(0.165656, 0.165656, 0.165656, 1)
+gradient = SubResource("Gradient_q6x4y")
+script = ExtResource("3_ueoit")
