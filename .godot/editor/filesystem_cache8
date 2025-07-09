@@ -1,0 +1,15 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1752057808
+icon.svg::CompressedTexture2D::7123020757232725638::1752057706::1752057810::1::::<><>::
+README.md::TextFile::-1::1752057706::0::1::::<><>::
+::res://Scenes/::1752057715
+movement.gd::GDScript::-1::1752057706::0::1::::<>CharacterBody2D<>::
+sprite_2d.tscn::PackedScene::1550953595117257300::1752057706::0::1::::<><>::uid://dt150cgkkt0b0::::res://Scenes/movement.gd<>uid://cy82x4ltch75p::::res://Sprites/Cars/temp-car.png<>uid://dt4wkd2oqxstg::::res://Scenes/trail.gd
+test_scene.tscn::PackedScene::5765386544544841452::1752057706::0::1::::<><>::uid://wdj8j4d4bxpc::::res://Scenes/sprite_2d.tscn<>uid://dee5fjjx4cbtt::::res://Sprites/Tilemaps/Racetrack/basic-racetrack.png
+trail.gd::GDScript::-1::1752057706::0::1::::<>Line2D<>::
+::res://Sprites/::1752057715
+::res://Sprites/Cars/::1752057715
+temp-car.png::CompressedTexture2D::6527180053683720707::1752057706::1752057810::1::::<><>::
+::res://Sprites/Tilemaps/::1752057715
+::res://Sprites/Tilemaps/Racetrack/::1752057715
+basic-racetrack.png::CompressedTexture2D::7450105863097430173::1752057706::1752057810::1::::<><>::
