@@ -1,2 +1,5 @@
+StaticBody2D
+Area2D
+Sprite2D
 AnimationPlayer
 AnimatedSprite2D

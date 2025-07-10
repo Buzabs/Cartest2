@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dwn44bcng11o1" path="res://Sprites/Cars/CarTuah.png" id="2_g3uxq"]
 [ext_resource type="Script" uid="uid://dt4wkd2oqxstg" path="res://Scenes/trail.gd" id="3_ueoit"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_obltv"]
-height = 32.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g3uxq"]
+size = Vector2(15, 26)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2awta"]
 atlas = ExtResource("2_g3uxq")
@@ -34,11 +34,13 @@ colors = PackedColorArray(0.0980392, 0.0980392, 0.0980392, 0, 0.099986, 0.099986
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_g3uxq")
+rotation_speed = 3.0
 acc = 300
 decc = 400
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_obltv")
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_g3uxq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

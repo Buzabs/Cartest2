@@ -11,14 +11,9 @@ var rotation_direction = 0 #kierunek obrotu
 var direction = 0 #kierunek
 
 
-
-
 func _physics_process(delta: float) -> void:
 	get_input()
-	
-	
-	
-	
+
 	if direction != 0:
 		var movement_vector = Vector2.UP.rotated(rotation) * direction #tworzy wektor na podstawie kierunku i obrotu
 		velocity = velocity.move_toward(movement_vector * speed, acc * delta)
@@ -32,8 +27,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		animation.stop()
 	
-	print(velocity.length())
-	
+	#print(rotation, "\t", velocity.angle())
 	
 	move_and_slide()
 	
