@@ -4,14 +4,23 @@ extends Line2D
 
 var point = Vector2()
 var car_velocity = Vector2()
+var a
+var b
+@export var drift_sensibility = 0.5
 
 func _process(delta: float) -> void:
 	global_position = Vector2(0, 0)
 	global_rotation = 0
 	
-	car_velocity = owner.velocity.rotated(0.5 * PI)
+	if owner.direction == 1:
+		car_velocity = owner.velocity.rotated(0.5 * PI)
+	elif owner.direction == -1:
+		car_velocity = owner.velocity.rotated(1.5 * PI)
 	
-	if abs(owner.rotation - car_velocity.angle()) >= 1 && abs(owner.rotation - car_velocity.angle()) < PI - 1:
+	a = owner.rotation - drift_sensibility
+	b = owner.rotation + drift_sensibility
+	
+	if not(car_velocity.angle() > a && car_velocity.angle() < b):
 	
 		point = get_parent().global_position
 		
@@ -20,9 +29,10 @@ func _process(delta: float) -> void:
 		while get_point_count() > lenght:
 			remove_point(0)
 		
+		
 	else: 
 		if get_point_count() != 0:
 			remove_point(0)
 			
 			
-	print(owner.rotation, "\t", car_velocity.angle())
+	print(owner.rotation, "\t", car_velocity.angle(), "\t", owner.direction)
