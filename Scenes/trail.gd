@@ -5,16 +5,13 @@ extends Line2D
 var point = Vector2()
 var car_velocity = Vector2()
 
-func _ready() -> void:
-	car_velocity = owner.velocity
-	car_velocity.x -= 2 * car_velocity.x
-
 func _process(delta: float) -> void:
 	global_position = Vector2(0, 0)
 	global_rotation = 0
 	
+	car_velocity = owner.velocity.rotated(0.5 * PI)
 	
-	if abs(owner.rotation - car_velocity.angle()) >= 1.8:
+	if abs(owner.rotation - car_velocity.angle()) >= 1 && abs(owner.rotation - car_velocity.angle()) < PI - 1:
 	
 		point = get_parent().global_position
 		
