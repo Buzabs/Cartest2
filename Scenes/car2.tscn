@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://dr8i3dgs87atf"]
 
-[ext_resource type="Script" uid="uid://dt150cgkkt0b0" path="res://Scenes/movement.gd" id="1_g3uxq"]
+[ext_resource type="Script" uid="uid://dt150cgkkt0b0" path="res://Scripts/movement.gd" id="1_g3uxq"]
 [ext_resource type="Texture2D" uid="uid://dwn44bcng11o1" path="res://Sprites/Cars/CarTuah.png" id="2_g3uxq"]
-[ext_resource type="Script" uid="uid://dt4wkd2oqxstg" path="res://Scenes/trail.gd" id="3_ueoit"]
+[ext_resource type="PackedScene" uid="uid://c4thsrccqukx" path="res://Scenes/trail.tscn" id="3_g3uxq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g3uxq"]
 size = Vector2(15, 26)
@@ -29,8 +29,8 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="Gradient" id="Gradient_q6x4y"]
-colors = PackedColorArray(0.0980392, 0.0980392, 0.0980392, 0, 0.099986, 0.099986, 0.099986, 1)
+[sub_resource type="Gradient" id="Gradient_g3uxq"]
+colors = PackedColorArray(0, 0, 0, 0, 0.0862745, 0.0862745, 0.0862745, 1)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_g3uxq")
@@ -52,21 +52,15 @@ frame_progress = 0.500772
 show_behind_parent = true
 position = Vector2(-7, 9)
 
-[node name="Line2D" type="Line2D" parent="AnimatedSprite2D/Point"]
-show_behind_parent = true
-width = 3.0
-default_color = Color(0.165656, 0.165656, 0.165656, 1)
-gradient = SubResource("Gradient_q6x4y")
-script = ExtResource("3_ueoit")
+[node name="Trail" parent="AnimatedSprite2D/Point" instance=ExtResource("3_g3uxq")]
+width = 4.0
+gradient = SubResource("Gradient_g3uxq")
 
 [node name="Point2" type="Node2D" parent="AnimatedSprite2D"]
 show_behind_parent = true
 position = Vector2(7, 9)
 
-[node name="Line2D2" type="Line2D" parent="AnimatedSprite2D/Point2"]
-show_behind_parent = true
+[node name="Trail2" parent="AnimatedSprite2D/Point2" instance=ExtResource("3_g3uxq")]
 position = Vector2(-14, 0)
-width = 3.0
-default_color = Color(0.165656, 0.165656, 0.165656, 1)
-gradient = SubResource("Gradient_q6x4y")
-script = ExtResource("3_ueoit")
+width = 4.0
+gradient = SubResource("Gradient_g3uxq")

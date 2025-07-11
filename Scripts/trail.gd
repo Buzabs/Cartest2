@@ -4,6 +4,7 @@ extends Line2D
 
 var point = Vector2()
 var car_velocity = Vector2()
+
 var a
 var b
 @export var drift_sensibility = 0.5

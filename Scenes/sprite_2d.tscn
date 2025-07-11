@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://wdj8j4d4bxpc"]
 
-[ext_resource type="Script" uid="uid://dt150cgkkt0b0" path="res://Scenes/movement.gd" id="1_obltv"]
+[ext_resource type="Script" uid="uid://dt150cgkkt0b0" path="res://Scripts/movement.gd" id="1_obltv"]
 [ext_resource type="Texture2D" uid="uid://cy82x4ltch75p" path="res://Sprites/Cars/temp-car.png" id="2_obltv"]
-[ext_resource type="Script" uid="uid://dt4wkd2oqxstg" path="res://Scenes/trail.gd" id="2_q6x4y"]
+[ext_resource type="Script" uid="uid://dt4wkd2oqxstg" path="res://Scripts/trail.gd" id="2_q6x4y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_obltv"]
 height = 32.0
