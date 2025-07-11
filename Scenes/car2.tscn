@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dr8i3dgs87atf"]
+[gd_scene load_steps=11 format=3 uid="uid://dr8i3dgs87atf"]
 
 [ext_resource type="Script" uid="uid://dt150cgkkt0b0" path="res://Scenes/movement.gd" id="1_g3uxq"]
 [ext_resource type="Texture2D" uid="uid://dwn44bcng11o1" path="res://Sprites/Cars/CarTuah.png" id="2_g3uxq"]
 [ext_resource type="Script" uid="uid://dt4wkd2oqxstg" path="res://Scenes/trail.gd" id="3_ueoit"]
+[ext_resource type="PackedScene" uid="uid://cdg1pp4q2osqf" path="res://Scenes/Exhaust2.tscn" id="4_2awta"]
+[ext_resource type="Script" uid="uid://ciw2g1win5bop" path="res://Scenes/exhaust_2.gd" id="5_ueoit"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g3uxq"]
 size = Vector2(15, 26)
@@ -58,6 +60,10 @@ width = 3.0
 default_color = Color(0.165656, 0.165656, 0.165656, 1)
 gradient = SubResource("Gradient_q6x4y")
 script = ExtResource("3_ueoit")
+drift_sensibility = 0.625
+
+[node name="exhaust1" parent="AnimatedSprite2D/Point" instance=ExtResource("4_2awta")]
+script = ExtResource("5_ueoit")
 
 [node name="Point2" type="Node2D" parent="AnimatedSprite2D"]
 show_behind_parent = true
@@ -70,3 +76,7 @@ width = 3.0
 default_color = Color(0.165656, 0.165656, 0.165656, 1)
 gradient = SubResource("Gradient_q6x4y")
 script = ExtResource("3_ueoit")
+drift_sensibility = 0.625
+
+[node name="exhaust1" parent="AnimatedSprite2D/Point2" instance=ExtResource("4_2awta")]
+script = ExtResource("5_ueoit")

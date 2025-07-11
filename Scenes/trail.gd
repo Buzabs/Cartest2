@@ -35,4 +35,4 @@ func _process(delta: float) -> void:
 			remove_point(0)
 			
 			
-	print(owner.rotation, "\t", car_velocity.angle(), "\t", owner.direction)
+	
