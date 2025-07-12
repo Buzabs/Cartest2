@@ -1,5 +1,3 @@
 res://Scenes/car2.tscn
-res://Scripts/movement.gd
-res://Scripts/trail.gd
 res://Scenes/test_scene.tscn
 res://Scripts/car.gd

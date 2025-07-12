@@ -1,6 +1,7 @@
+Node2D
+AnimatedSprite2D
 Line2D
 StaticBody2D
 Area2D
 Sprite2D
 AnimationPlayer
-AnimatedSprite2D
