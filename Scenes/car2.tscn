@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dr8i3dgs87atf"]
 
-[ext_resource type="Script" uid="uid://dt150cgkkt0b0" path="res://Scripts/movement.gd" id="1_g3uxq"]
+[ext_resource type="Script" uid="uid://dt150cgkkt0b0" path="res://Scripts/car.gd" id="1_g3uxq"]
 [ext_resource type="Texture2D" uid="uid://dwn44bcng11o1" path="res://Sprites/Cars/CarTuah.png" id="2_g3uxq"]
 [ext_resource type="PackedScene" uid="uid://c4thsrccqukx" path="res://Scenes/trail.tscn" id="3_g3uxq"]
 
