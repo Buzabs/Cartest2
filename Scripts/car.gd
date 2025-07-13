@@ -51,6 +51,8 @@ func _process(delta: float) -> void: #wszystko inne oprócz fizyki
 	if velocity == Vector2.ZERO: StateMachine.current_state = change_state(StateMachine.States.IDLE)
 	else:
 		animation.speed_scale = velocity.length() / speed
+		
+		#Sprawdzanie czy driftuje
 		if not(car_velocity.angle() > rotation_min && car_velocity.angle() < rotation_max):
 			change_state(StateMachine.States.DRIFTING)	
 		else: change_state(StateMachine.States.DRIVING)

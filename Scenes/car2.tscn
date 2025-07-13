@@ -36,6 +36,9 @@ colors = PackedColorArray(0, 0, 0, 0, 0.0862745, 0.0862745, 0.0862745, 1)
 script = ExtResource("1_g3uxq")
 rotation_speed = 3.0
 
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_g3uxq")
