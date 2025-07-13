@@ -1,11 +1,10 @@
-<<<<<<< HEAD
-CPUParticles2D
-=======
-Camera2D
 Node2D
+Camera2D
+CollisionShape2D
 AnimatedSprite2D
+CharacterBody2D
+CPUParticles2D
 Line2D
->>>>>>> origin/Cartest
 StaticBody2D
 Area2D
 Sprite2D

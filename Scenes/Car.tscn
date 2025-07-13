@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://b6pg70e8e06ln"]
+
+[ext_resource type="Texture2D" uid="uid://dwn44bcng11o1" path="res://Sprites/Cars/CarTuah.png" id="1_1k6jk"]
+[ext_resource type="Script" uid="uid://dt150cgkkt0b0" path="res://Scripts/car.gd" id="1_jbim0"]
+[ext_resource type="PackedScene" uid="uid://c4thsrccqukx" path="res://Scenes/trail.tscn" id="2_y2uan"]
+
+[sub_resource type="Gradient" id="Gradient_gvgjh"]
+colors = PackedColorArray(0, 0, 0, 0, 0.0862745, 0.0862745, 0.0862745, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2uan"]
+atlas = ExtResource("1_1k6jk")
+region = Rect2(0, 0, 33, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvgjh"]
+atlas = ExtResource("1_1k6jk")
+region = Rect2(33, 0, 33, 37)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w13o2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2uan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvgjh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1k6jk"]
+size = Vector2(13, 27)
+
+[node name="Car" type="CharacterBody2D"]
+script = ExtResource("1_jbim0")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="TrialPoint" type="Node2D" parent="."]
+show_behind_parent = true
+position = Vector2(-7, 9)
+
+[node name="Trail" parent="TrialPoint" instance=ExtResource("2_y2uan")]
+width = 5.0
+gradient = SubResource("Gradient_gvgjh")
+
+[node name="TrialPoint2" type="Node2D" parent="."]
+show_behind_parent = true
+position = Vector2(6, 9)
+
+[node name="Trail" parent="TrialPoint2" instance=ExtResource("2_y2uan")]
+width = 5.0
+gradient = SubResource("Gradient_gvgjh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_w13o2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_1k6jk")
