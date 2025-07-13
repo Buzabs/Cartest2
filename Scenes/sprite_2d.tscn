@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=3 uid="uid://wdj8j4d4bxpc"]
+[gd_scene load_steps=5 format=3 uid="uid://wdj8j4d4bxpc"]
 
-[ext_resource type="Script" uid="uid://dt150cgkkt0b0" path="res://Scripts/car.gd" id="1_obltv"]
 [ext_resource type="Texture2D" uid="uid://cy82x4ltch75p" path="res://Sprites/Cars/temp-car.png" id="2_obltv"]
 [ext_resource type="Script" uid="uid://dt4wkd2oqxstg" path="res://Scripts/trail.gd" id="2_q6x4y"]
 
@@ -11,9 +10,6 @@ height = 32.0
 colors = PackedColorArray(0.0980392, 0.0980392, 0.0980392, 0, 0.099986, 0.099986, 0.099986, 1)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
-script = ExtResource("1_obltv")
-acc = 300
-decc = 400
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_obltv")

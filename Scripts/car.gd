@@ -5,13 +5,15 @@ extends CharacterBody2D
 @export var acc = 200 #przyspieszenie
 @export var decc = 300 #zwalnianie
 
+@export var drift_sensibility = 0.5
+var rotation_max 
+var rotation_min
+var car_velocity = Vector2()
+
 @onready var animation = $AnimatedSprite2D
-@onready var trail = $AnimatedSprite2D/TrialPos/Trail
 
 var rotation_direction = 0 #kierunek obrotu
 var direction = 0 #kierunek
-
-var state = StateMachine.States.IDLE #bierzący stan
 
 func _physics_process(delta: float) -> void: #TYLKO PROCESY FIZYCZNE!!!!!!!!!
 	get_input()
@@ -33,20 +35,32 @@ func get_input():
 	
 func change_state(new_state: int):
 	#var previous_state := state | To jeśli będziemy chcieli coś robić na zmianie stanu
-	state = new_state
+	StateMachine.current_state = new_state
 		
 	
 func _process(delta: float) -> void: #wszystko inne oprócz fizyki
 	
-	if velocity == Vector2.ZERO: state = change_state(StateMachine.States.IDLE)
+	if direction == 1:
+		car_velocity = velocity.rotated(0.5 * PI)
+	elif direction == -1:
+		car_velocity = velocity.rotated(1.5 * PI)
+		
+	rotation_min = rotation - drift_sensibility
+	rotation_max = rotation + drift_sensibility
+	
+	if velocity == Vector2.ZERO: StateMachine.current_state = change_state(StateMachine.States.IDLE)
 	else:
 		animation.speed_scale = velocity.length() / speed
-		if trail.drifting == true: change_state(StateMachine.States.DRIFTING)
+		if not(car_velocity.angle() > rotation_min && car_velocity.angle() < rotation_max):
+			change_state(StateMachine.States.DRIFTING)	
 		else: change_state(StateMachine.States.DRIVING)
 		
-	if state in [StateMachine.States.DRIVING, StateMachine.States.DRIFTING]:
+	if StateMachine.current_state in [StateMachine.States.DRIVING, StateMachine.States.DRIFTING]:
 		animation.play("default")
-	elif state == StateMachine.States.IDLE:
+	elif StateMachine.current_state == StateMachine.States.IDLE:
 		animation.stop()
 		
-	print(state)
+	
+	
+	
+	print(StateMachine.current_state)
