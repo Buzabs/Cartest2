@@ -1,5 +1,10 @@
-res://Scenes/test_scene.tscn
 res://Scenes/car2.tscn
+<<<<<<< HEAD
 res://Scenes/trail.gd
 res://Scenes/Exhaust2.tscn
 res://Scenes/exhaust_2.gd
+=======
+res://Scripts/car.gd
+res://Scenes/test_scene.tscn
+res://Scenes/sprite_2d.tscn
+>>>>>>> origin/Cartest

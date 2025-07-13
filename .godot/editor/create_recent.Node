@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 CPUParticles2D
+=======
+Camera2D
+Node2D
+AnimatedSprite2D
+Line2D
+>>>>>>> origin/Cartest
 StaticBody2D
 Area2D
 Sprite2D
 AnimationPlayer
-AnimatedSprite2D
