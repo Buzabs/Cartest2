@@ -3,22 +3,25 @@ extends Node2D
 
 var car_velocity = Vector2()
 
-	
+
 
 
 
 func _process(delta: float) -> void:
+	self.direction = car_velocity
 	
-	$CPUParticles2D.direction = car_velocity
+	self.initial_velocity_min = owner.velocity.length() * 0.5
+	self.initial_velocity_max = owner.velocity.length() * 0.5
+
 	
 	if owner.direction != 0:
-		$CPUParticles2D.emitting = true
-		$CPUParticles2D.spread = 15
-		car_velocity = owner.velocity.normalized() * transform.inverse()
+		self.emitting = true
+		self.spread = 15
+		car_velocity = owner.velocity * transform.inverse()
 	else:
-		$CPUParticles2D.emitting = false
+		self.emitting = false
 	
-	if $CPUParticles2D.direction == Vector2.ZERO:
-		$CPUParticles2D.spread = 180
+	if self.direction == Vector2.ZERO:
+		self.spread = 180
 
 	

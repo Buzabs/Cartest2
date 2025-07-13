@@ -1,19 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://cdg1pp4q2osqf"]
+[gd_scene load_steps=3 format=3 uid="uid://cdg1pp4q2osqf"]
 
-[sub_resource type="Curve" id="Curve_g8pc5"]
-_data = [Vector2(0.0284091, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.292135), 0.0, 0.0, 0, 0]
+[ext_resource type="Script" uid="uid://ciw2g1win5bop" path="res://Scripts/exhaust_2.gd" id="1_15354"]
+
+[sub_resource type="Curve" id="Curve_15354"]
+_data = [Vector2(0.1875, 1), 0.0, 0.0, 0, 0, Vector2(0.772727, 0.11236), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="Node2D" type="Node2D"]
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-scale = Vector2(0.998334, 0.983873)
-lifetime = 2.72
-randomness = 0.52
-lifetime_randomness = 0.3
-direction = Vector2(0, 0)
-spread = 43.93
+[node name="CPUParticles2D" type="CPUParticles2D"]
+lifetime = 5.3
+randomness = 0.25
+lifetime_randomness = 0.44
 gravity = Vector2(0, 0)
-initial_velocity_min = 91.91
-initial_velocity_max = 91.91
-scale_amount_curve = SubResource("Curve_g8pc5")
+initial_velocity_min = 40.4
+initial_velocity_max = 55.75
+scale_amount_curve = SubResource("Curve_15354")
+script = ExtResource("1_15354")

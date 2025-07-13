@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b6pg70e8e06ln"]
+[gd_scene load_steps=10 format=3 uid="uid://b6pg70e8e06ln"]
 
 [ext_resource type="Texture2D" uid="uid://dwn44bcng11o1" path="res://Sprites/Cars/CarTuah.png" id="1_1k6jk"]
 [ext_resource type="Script" uid="uid://dt150cgkkt0b0" path="res://Scripts/car.gd" id="1_jbim0"]
 [ext_resource type="PackedScene" uid="uid://c4thsrccqukx" path="res://Scenes/trail.tscn" id="2_y2uan"]
+[ext_resource type="PackedScene" uid="uid://cdg1pp4q2osqf" path="res://Scenes/Exhaust2.tscn" id="3_qeqd0"]
 
 [sub_resource type="Gradient" id="Gradient_gvgjh"]
 colors = PackedColorArray(0, 0, 0, 0, 0.0862745, 0.0862745, 0.0862745, 1)
@@ -46,6 +47,8 @@ position = Vector2(-7, 9)
 width = 5.0
 gradient = SubResource("Gradient_gvgjh")
 
+[node name="CPUParticles2D" parent="TrialPoint" instance=ExtResource("3_qeqd0")]
+
 [node name="TrialPoint2" type="Node2D" parent="."]
 show_behind_parent = true
 position = Vector2(6, 9)
@@ -53,6 +56,8 @@ position = Vector2(6, 9)
 [node name="Trail" parent="TrialPoint2" instance=ExtResource("2_y2uan")]
 width = 5.0
 gradient = SubResource("Gradient_gvgjh")
+
+[node name="CPUParticles2D" parent="TrialPoint2" instance=ExtResource("3_qeqd0")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
