@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://c4thsrccqukx" path="res://Scenes/trail.tscn" id="2_y2uan"]
 [ext_resource type="PackedScene" uid="uid://cdg1pp4q2osqf" path="res://Scenes/Exhaust2.tscn" id="3_qeqd0"]
 
-[sub_resource type="Gradient" id="Gradient_gvgjh"]
-colors = PackedColorArray(0, 0, 0, 0, 0.0862745, 0.0862745, 0.0862745, 1)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1k6jk"]
+size = Vector2(13, 27)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y2uan"]
 atlas = ExtResource("1_1k6jk")
@@ -30,24 +30,37 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1k6jk"]
-size = Vector2(13, 27)
+[sub_resource type="Gradient" id="Gradient_gvgjh"]
+colors = PackedColorArray(0, 0, 0, 0, 0.0862745, 0.0862745, 0.0862745, 1)
 
 [node name="Car" type="CharacterBody2D"]
 script = ExtResource("1_jbim0")
+nitro_speed = 50
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_1k6jk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_w13o2")
 
 [node name="TrialPoint" type="Node2D" parent="."]
 show_behind_parent = true
 position = Vector2(-7, 9)
 
-[node name="Trail" parent="TrialPoint" instance=ExtResource("2_y2uan")]
+[node name="CPUParticles2D" parent="TrialPoint" instance=ExtResource("3_qeqd0")]
+
+[node name="Trail2" parent="TrialPoint" instance=ExtResource("2_y2uan")]
+position = Vector2(13, 0)
 width = 5.0
 gradient = SubResource("Gradient_gvgjh")
-
-[node name="CPUParticles2D" parent="TrialPoint" instance=ExtResource("3_qeqd0")]
 
 [node name="TrialPoint2" type="Node2D" parent="."]
 show_behind_parent = true
@@ -58,11 +71,3 @@ width = 5.0
 gradient = SubResource("Gradient_gvgjh")
 
 [node name="CPUParticles2D" parent="TrialPoint2" instance=ExtResource("3_qeqd0")]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_w13o2")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -0.5)
-shape = SubResource("RectangleShape2D_1k6jk")

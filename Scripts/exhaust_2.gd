@@ -1,11 +1,6 @@
 extends Node2D
 
-
 var car_velocity = Vector2()
-
-
-
-
 
 func _process(delta: float) -> void:
 	self.direction = car_velocity

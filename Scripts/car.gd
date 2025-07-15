@@ -11,9 +11,13 @@ var rotation_min
 var car_velocity = Vector2()
 
 @onready var animation = $AnimatedSprite2D
+@onready var nitro_timer = $Timer
 
 var rotation_direction = 0 #kierunek obrotu
 var direction = 0 #kierunek
+var nitro = 0 #input
+
+@export var nitro_speed = 2
 
 func _physics_process(delta: float) -> void: #TYLKO PROCESY FIZYCZNE!!!!!!!!!
 	get_input()
@@ -21,6 +25,7 @@ func _physics_process(delta: float) -> void: #TYLKO PROCESY FIZYCZNE!!!!!!!!!
 	if direction != 0:
 		var movement_vector = Vector2.UP.rotated(rotation) * direction #tworzy wektor na podstawie kierunku i obrotu
 		velocity = velocity.move_toward(movement_vector * speed, acc * delta)
+		if nitro: nitro_boost(movement_vector * delta)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, decc * delta)
 	
@@ -32,11 +37,18 @@ func _physics_process(delta: float) -> void: #TYLKO PROCESY FIZYCZNE!!!!!!!!!
 func get_input():
 	rotation_direction = Input.get_axis("Left", "Right")
 	direction = Input.get_axis("Down", "Up")
+	nitro = Input.is_action_just_pressed("Nitro")
 	
 func change_state(new_state: int):
 	#var previous_state := state | To jeśli będziemy chcieli coś robić na zmianie stanu
 	StateMachine.current_state = new_state
 		
+func nitro_boost(movement_vector):
+	nitro_timer.start()
+	if !nitro_timer.is_stopped():
+		change_state(StateMachine.States.NITRO)
+		velocity = movement_vector * speed * nitro_speed
+		move_and_slide()  
 	
 func _process(delta: float) -> void: #wszystko inne oprócz fizyki
 	
@@ -65,4 +77,4 @@ func _process(delta: float) -> void: #wszystko inne oprócz fizyki
 	
 	
 	
-	print(StateMachine.current_state)
+	#print(StateMachine.current_state)

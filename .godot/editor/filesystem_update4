@@ -1,4 +1,5 @@
+res://Scenes/Car.tscn
 res://Scenes/TestScene.tscn
 res://Scenes/Exhaust2.tscn
-res://Scenes/Car.tscn
-res://Scripts/exhaust_2.gd
+res://Scripts/trail.gd
+res://Scripts/car.gd
