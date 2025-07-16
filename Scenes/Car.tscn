@@ -37,7 +37,8 @@ colors = PackedColorArray(0, 0, 0, 0, 0.0862745, 0.0862745, 0.0862745, 1)
 script = ExtResource("1_jbim0")
 nitro_speed = 50
 
-[node name="Timer" type="Timer" parent="."]
+[node name="NitroCooldown" type="Timer" parent="."]
+process_callback = 0
 wait_time = 2.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -71,3 +72,5 @@ width = 5.0
 gradient = SubResource("Gradient_gvgjh")
 
 [node name="CPUParticles2D" parent="TrialPoint2" instance=ExtResource("3_qeqd0")]
+
+[connection signal="timeout" from="NitroCooldown" to="." method="_on_timer_timeout"]

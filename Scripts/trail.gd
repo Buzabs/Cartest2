@@ -1,16 +1,16 @@
 extends Line2D
 
-@export var lenght = 40
+@export var lenght := 40
 
-var point = Vector2()
+var point := Vector2()
 
-@onready var default_gradient = gradient
-var nitro_gradient = Gradient.new()
+@onready var default_gradient := gradient
+var nitro_gradient := Gradient.new()
 
-var is_drawing = false
+var is_drawing := false
 
 func _ready() -> void:
-	nitro_gradient.colors = [Color.AQUA, Color.TRANSPARENT]
+	nitro_gradient.colors = [Color.TRANSPARENT, Color.AQUA]
 	nitro_gradient.offsets = [0.0, 1.0]
 
 func _process(delta: float) -> void:
