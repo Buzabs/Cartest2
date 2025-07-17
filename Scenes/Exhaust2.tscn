@@ -3,13 +3,15 @@
 [ext_resource type="Script" uid="uid://ciw2g1win5bop" path="res://Scripts/exhaust_2.gd" id="1_15354"]
 
 [sub_resource type="Curve" id="Curve_15354"]
-_data = [Vector2(0.1875, 1), 0.0, 0.0, 0, 0, Vector2(0.772727, 0.11236), 0.0, 0.0, 0, 0]
+_data = [Vector2(0.176136, 1), 0.0, 0.0, 0, 0, Vector2(0.772727, 0.11236), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="CPUParticles2D" type="CPUParticles2D"]
+rotation = 1.5708
 lifetime = 5.3
 randomness = 0.25
 lifetime_randomness = 0.44
+spread = 30.45
 gravity = Vector2(0, 0)
 initial_velocity_min = 40.4
 initial_velocity_max = 55.75

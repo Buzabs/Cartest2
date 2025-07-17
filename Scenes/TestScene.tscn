@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0oo5p0g2r8w5"]
+[gd_scene load_steps=5 format=3 uid="uid://b0oo5p0g2r8w5"]
 
 [ext_resource type="Texture2D" uid="uid://7jri5omsogqx" path="res://Sprites/placeholders/placeholder-racetrack2.png" id="1_5lt6y"]
 [ext_resource type="PackedScene" uid="uid://b6pg70e8e06ln" path="res://Scenes/Car.tscn" id="1_mncer"]
+[ext_resource type="PackedScene" uid="uid://cdoq37nysvx3y" path="res://Scenes/enemy.tscn" id="3_8k7wh"]
+
+[sub_resource type="Curve2D" id="Curve2D_5lt6y"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 599, 320, -13.6603, 49.177, 13.6603, -49.177, 612, 109, 0, 0, 0, 0, 668, 22, -25.2715, -6.14712, 25.2715, 6.14712, 777, -28, -44.3959, -10.2452, 44.3959, 10.2452, 961, -66, -34.8337, -10.9282, 34.8337, 10.9282, 1272, 43, 0, 0, 0, 0, 1284, 223, 37.5657, -6.83013, -37.5657, 6.83013, 1283, 524, 20.4904, 6.83013, -20.4904, -6.83013, 1154, 656, -2.73205, -7.51315, 2.73205, 7.51315, 979, 741, 12.3967, 42.1488, -12.3967, -42.1488, 792, 790, -19.8347, 28.0992, 19.8347, -28.0992, 594, 692, 0, 0, 0, 0, 595, 568, 0, 0, 0, 0, 598, 321, 0, 0, 0, 0, 599, 320)
+}
+point_count = 15
 
 [node name="Node2D" type="Node2D"]
 
@@ -12,3 +19,17 @@ texture = ExtResource("1_5lt6y")
 
 [node name="Car" parent="." instance=ExtResource("1_mncer")]
 position = Vector2(580, 328)
+
+[node name="Track" type="Path2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-1, -10)
+curve = SubResource("Curve2D_5lt6y")
+
+[node name="TrackFollow" type="PathFollow2D" parent="Track"]
+unique_name_in_owner = true
+position = Vector2(599, 320)
+rotation = -1.50926
+scale = Vector2(1, 1)
+
+[node name="Enemy" parent="Track" instance=ExtResource("3_8k7wh")]
+position = Vector2(600, 417)
