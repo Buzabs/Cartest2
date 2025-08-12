@@ -34,15 +34,13 @@ animations = [{
 colors = PackedColorArray(0, 0, 0, 0, 0.0862745, 0.0862745, 0.0862745, 1)
 
 [node name="Car" type="CharacterBody2D"]
+collision_mask = 7
 script = ExtResource("1_jbim0")
 nitro_speed = 50
 
 [node name="NitroCooldown" type="Timer" parent="."]
 process_callback = 0
 wait_time = 2.0
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2.25, 2.25)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -0.5)

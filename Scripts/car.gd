@@ -81,10 +81,6 @@ func _process(delta: float) -> void: #wszystko inne oprócz fizyki
 	elif StateMachine.current_state == StateMachine.States.IDLE:
 		animation.stop()
 		
-	
-	
-	
-	print(StateMachine.current_state)
 
 
 func _on_timer_timeout() -> void:
@@ -94,3 +90,6 @@ func _on_timer_timeout() -> void:
 		change_state(StateMachine.States.DRIVING)
 	else:
 		change_state(StateMachine.States.IDLE)
+		
+func car_collision_id():
+	pass

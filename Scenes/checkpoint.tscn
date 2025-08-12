@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dahoemngkgnt"]
+
+[ext_resource type="Script" uid="uid://307h6vnf1djq" path="res://Scripts/checkpoints.gd" id="1_lbcco"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jkya8"]
+
+[node name="Checkpoint" type="Area2D" groups=["Checkpoints"]]
+collision_layer = 2
+script = ExtResource("1_lbcco")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_jkya8")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
