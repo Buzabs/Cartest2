@@ -54,7 +54,7 @@ func nitro_boost(movement_vector):
 	can_nitro = false
 	change_state(StateMachine.States.NITRO)
 	
-func _process(delta: float) -> void: #wszystko inne oprócz fizyki
+func _process(_delta: float) -> void: #wszystko inne oprócz fizyki
 	
 	if StateMachine.current_state == StateMachine.States.NITRO:
 		return

@@ -9,14 +9,15 @@ var ray_directions = []
 var interest = []
 var danger = [] 
 
-#@onready var path = %Track
-#@onready var path_follow = %TrackFollow
+var id: String = "Enemy1"
+
+var laps: int = 0
 
 var direction := Vector2.ZERO
 var acc := Vector2.ZERO
 
 func _ready() -> void:
-	 
+	laps = 0
 	interest.resize(num_rays)
 	danger.resize(num_rays)
 	ray_directions.resize(num_rays)
@@ -67,4 +68,9 @@ func choose_direction():
 	direction = direction.normalized()
 
 
-	
+func _on_enemy_finish_line_body_entered(_body: Node2D) -> void:
+	laps += 1
+	if laps > GlobalVariables.max_laps:
+		GlobalVariables.bracket.append(id)
+		GlobalVariables.race_finished.emit()
+	print("Enemy reached finish line")

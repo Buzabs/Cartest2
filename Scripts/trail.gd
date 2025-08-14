@@ -13,7 +13,7 @@ func _ready() -> void:
 	nitro_gradient.colors = [Color.TRANSPARENT, Color.AQUA]
 	nitro_gradient.offsets = [0.0, 1.0]
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	global_position = Vector2(0, 0)
 	global_rotation = 0
 	

@@ -2,7 +2,7 @@ extends Node2D
 
 var car_velocity = Vector2()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	self.direction = car_velocity
 	
 	self.initial_velocity_min = owner.velocity.length() * 0.5

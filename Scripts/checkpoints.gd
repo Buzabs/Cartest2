@@ -14,4 +14,4 @@ func _on_body_entered(body: Node2D) -> void:
 	if !reached and body.has_method("car_collision_id"):
 		GlobalVariables.reached_checkpoints += 1
 		reached = true
-		print(GlobalVariables.reached_checkpoints)
+		#print(GlobalVariables.reached_checkpoints)
