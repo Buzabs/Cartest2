@@ -6,6 +6,7 @@ extends Node2D
 @onready var path_follow = %TrackFollow
 @onready var lap_counter_text = %LapCount
 @onready var bracket_text = %Bracket
+@onready var nitro_progress: ProgressBar = $Car/CanvasLayer/NitroProgress
 
 var checkpoints_arr = []
 var checkpoints_count: int = 0
@@ -44,3 +45,6 @@ func _on_car_finished_race():
 	if cars_arr.size() == GlobalVariables.finished_cars:
 		for i in GlobalVariables.bracket:
 			bracket_text.text += i + "\n"
+
+func _process(delta: float) -> void:
+	nitro_progress.value = GlobalVariables.drift_time_percentage

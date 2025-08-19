@@ -7,6 +7,11 @@ var reached_checkpoints: int = 0
 var laps: int = 0
 var max_laps: int = 3
 
-var finished_cars = 0
+var finished_cars: int = 0
 
 var bracket = []
+
+var drift_time_left: float
+var drift_wait_time: float
+
+var drift_time_percentage: int = 0

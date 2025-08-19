@@ -1,16 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://b0oo5p0g2r8w5"]
+[gd_scene load_steps=14 format=3 uid="uid://b0oo5p0g2r8w5"]
 
 [ext_resource type="Script" uid="uid://bgi6buttie4jm" path="res://Scripts/test_scene.gd" id="1_0f5h7"]
 [ext_resource type="PackedScene" uid="uid://b6pg70e8e06ln" path="res://Scenes/Car.tscn" id="1_mncer"]
 [ext_resource type="Texture2D" uid="uid://bbv0rcvu7dviv" path="res://Sprites/placeholders/early_racetrack_test.png" id="2_iufkg"]
 [ext_resource type="PackedScene" uid="uid://cdoq37nysvx3y" path="res://Scenes/enemy.tscn" id="3_8k7wh"]
+[ext_resource type="FontFile" uid="uid://bsf4i6uq7hmtd" path="res://Fonts/upheaval/upheavtt.ttf" id="4_qsjrb"]
 [ext_resource type="PackedScene" uid="uid://dahoemngkgnt" path="res://Scenes/checkpoint.tscn" id="6_qsjrb"]
 
 [sub_resource type="SystemFont" id="SystemFont_iufkg"]
 font_names = PackedStringArray("Upheaval TT (BRK)")
 
-[sub_resource type="SystemFont" id="SystemFont_0f5h7"]
-font_names = PackedStringArray("Upheaval TT (BRK)")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qsjrb"]
+bg_color = Color(0.309804, 0.882353, 0.94902, 1)
 
 [sub_resource type="Curve2D" id="Curve2D_5lt6y"]
 bake_interval = 50.0
@@ -62,9 +63,17 @@ texture_filter = 1
 offset_left = 826.0
 offset_right = 1280.0
 offset_bottom = 176.0
-theme_override_fonts/normal_font = SubResource("SystemFont_0f5h7")
+theme_override_fonts/normal_font = ExtResource("4_qsjrb")
 theme_override_font_sizes/normal_font_size = 30
 horizontal_alignment = 2
+
+[node name="NitroProgress" type="ProgressBar" parent="Car/CanvasLayer"]
+offset_left = 484.0
+offset_top = 1.0
+offset_right = 922.0
+offset_bottom = 28.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_qsjrb")
+show_percentage = false
 
 [node name="Enemy" parent="." groups=["Cars"] instance=ExtResource("3_8k7wh")]
 position = Vector2(547, 135)
