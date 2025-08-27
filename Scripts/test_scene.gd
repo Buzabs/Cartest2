@@ -29,7 +29,6 @@ func get_path_direction(pos):
 	return path_follow.transform.x
 
 func _on_lap_counter_body_entered(_body: Node2D) -> void:
-	print("hello")
 	if GlobalVariables.reached_checkpoints == checkpoints_count:
 		GlobalVariables.laps += 1
 		lap_counter_text.text = "LAP: " + str(GlobalVariables.laps) + " / " + str(GlobalVariables.max_laps)

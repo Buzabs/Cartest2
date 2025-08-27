@@ -1,7 +1,5 @@
 res://Scenes/Car.tscn
-res://Scripts/global_variables.gd
 res://Scripts/car.gd
 res://Scenes/enemy.tscn
 res://Scenes/TestScene.tscn
 res://main_menu.tscn
-res://Scripts/test_scene.gd
