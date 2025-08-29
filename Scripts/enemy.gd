@@ -27,14 +27,15 @@ func _ready() -> void:
 		ray_directions[i] = Vector2.RIGHT.rotated(angle)
 
 func _physics_process(delta: float) -> void:
-	set_interest()
-	set_danger()
-	choose_direction()
-	var desired_velocity = direction.rotated(rotation) * max_speed
-	velocity = velocity.lerp(desired_velocity, steer_force)
-	rotation = velocity.angle()
-	move_and_collide(velocity * delta)
-
+	if GlobalVariables.can_start:
+		set_interest()
+		set_danger()
+		choose_direction()
+		var desired_velocity = direction.rotated(rotation) * max_speed
+		velocity = velocity.lerp(desired_velocity, steer_force)
+		rotation = velocity.angle()
+		move_and_collide(velocity * delta)
+		
 func set_interest():
 	if owner and owner.has_method("get_path_direction"):
 		var path_direction = get_parent().get_path_direction(position)
@@ -70,7 +71,7 @@ func choose_direction():
 
 func _on_enemy_finish_line_body_entered(_body: Node2D) -> void:
 	laps += 1
-	if laps > GlobalVariables.max_laps:
+	if laps == GlobalVariables.max_laps and id not in GlobalVariables.bracket:
 		GlobalVariables.bracket.append(id)
 		GlobalVariables.race_finished.emit()
 	print("Enemy reached finish line")

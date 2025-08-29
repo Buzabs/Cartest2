@@ -13,6 +13,8 @@ var checkpoints_count: int = 0
 
 var cars_arr = []
 
+var player_id = "PlayerCar"
+
 func _ready() -> void:
 	GlobalVariables.laps = 0
 	checkpoints_arr = get_tree().get_nodes_in_group("Checkpoints")
@@ -35,8 +37,8 @@ func _on_lap_counter_body_entered(_body: Node2D) -> void:
 		GlobalVariables.reached_checkpoints = 0
 		GlobalVariables.reset_reached.emit()
 		
-	if GlobalVariables.laps > GlobalVariables.max_laps:
-		GlobalVariables.bracket.append("PlayerCar")
+	if GlobalVariables.laps == GlobalVariables.max_laps and player_id not in GlobalVariables.bracket:
+		GlobalVariables.bracket.append(player_id)
 		GlobalVariables.race_finished.emit()
 
 func _on_car_finished_race():

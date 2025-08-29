@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b0oo5p0g2r8w5"]
+[gd_scene load_steps=15 format=3 uid="uid://b0oo5p0g2r8w5"]
 
 [ext_resource type="Script" uid="uid://bgi6buttie4jm" path="res://Scripts/test_scene.gd" id="1_0f5h7"]
 [ext_resource type="PackedScene" uid="uid://b6pg70e8e06ln" path="res://Scenes/Car.tscn" id="1_mncer"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cdoq37nysvx3y" path="res://Scenes/enemy.tscn" id="3_8k7wh"]
 [ext_resource type="FontFile" uid="uid://bsf4i6uq7hmtd" path="res://Fonts/upheaval/upheavtt.ttf" id="4_qsjrb"]
 [ext_resource type="PackedScene" uid="uid://dahoemngkgnt" path="res://Scenes/checkpoint.tscn" id="6_qsjrb"]
+[ext_resource type="PackedScene" uid="uid://cu0cc86ie5m6b" path="res://Scenes/countdown.tscn" id="7_c264a"]
 
 [sub_resource type="SystemFont" id="SystemFont_iufkg"]
 font_names = PackedStringArray("Upheaval TT (BRK)")
@@ -41,10 +42,10 @@ position = Vector2(922, 398)
 texture = ExtResource("2_iufkg")
 
 [node name="Car" parent="." groups=["Cars"] instance=ExtResource("1_mncer")]
-position = Vector2(488, 109)
+position = Vector2(490, 263)
 
 [node name="Camera" type="Camera2D" parent="Car"]
-zoom = Vector2(2.5, 2.5)
+zoom = Vector2(2, 2)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Car"]
 
@@ -60,25 +61,25 @@ theme_override_font_sizes/normal_font_size = 30
 [node name="Bracket" type="RichTextLabel" parent="Car/CanvasLayer"]
 unique_name_in_owner = true
 texture_filter = 1
-offset_left = 826.0
-offset_right = 1280.0
-offset_bottom = 176.0
+offset_left = 425.0
+offset_top = 1.0
+offset_right = 641.0
+offset_bottom = 177.0
 theme_override_fonts/normal_font = ExtResource("4_qsjrb")
 theme_override_font_sizes/normal_font_size = 30
 horizontal_alignment = 2
 
 [node name="NitroProgress" type="ProgressBar" parent="Car/CanvasLayer"]
-offset_left = 484.0
+offset_left = 181.0
 offset_top = 1.0
-offset_right = 922.0
+offset_right = 418.0
 offset_bottom = 28.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_qsjrb")
 show_percentage = false
 
 [node name="Enemy" parent="." groups=["Cars"] instance=ExtResource("3_8k7wh")]
-position = Vector2(547, 135)
+position = Vector2(546, 263)
 rotation = 1.70065
-max_speed = 360
 steer_force = 0.4
 look_ahead = 50
 num_rays = 16
@@ -149,6 +150,9 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyFinishLine"]
 position = Vector2(98.5, 10)
 shape = SubResource("RectangleShape2D_c264a")
+
+[node name="Countdown" parent="." instance=ExtResource("7_c264a")]
+position = Vector2(432, 240)
 
 [connection signal="area_entered" from="LapCounter" to="." method="_on_lap_counter_area_entered"]
 [connection signal="body_entered" from="LapCounter" to="." method="_on_lap_counter_body_entered"]

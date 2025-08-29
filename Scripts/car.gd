@@ -45,9 +45,10 @@ func _physics_process(delta: float) -> void: #TYLKO PROCESY FIZYCZNE!!!!!!!!!
 	move_and_slide()
 	
 func get_input():
-	rotation_direction = Input.get_axis("Left", "Right")
-	direction = Input.get_axis("Down", "Up")
-	nitro = Input.is_action_just_pressed("Nitro")
+	if GlobalVariables.can_start:
+		rotation_direction = Input.get_axis("Left", "Right")
+		direction = Input.get_axis("Down", "Up")
+		nitro = Input.is_action_just_pressed("Nitro")
 	
 func change_state(new_state: int):
 	#var previous_state := state | To jeśli będziemy chcieli coś robić na zmianie stanu
@@ -118,13 +119,7 @@ func _process(_delta: float) -> void: #wszystko inne oprócz fizyki
 	elif StateMachine.current_state == StateMachine.States.IDLE:
 		animation.stop()
 		
-	print("Current State: ", StateMachine.current_state)
 
-	print("Drift Timer Time Left: ", drift_timer.time_left)
-
-	print("Nitro Cooldown Time Left: ", nitro_cooldown.time_left)
-
-	print("Drift Time Percentage: ", GlobalVariables.drift_time_percentage)
 		
 
 	

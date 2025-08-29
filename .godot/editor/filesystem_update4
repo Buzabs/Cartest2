@@ -1,5 +1,10 @@
-res://Scenes/Car.tscn
-res://Scripts/car.gd
-res://Scenes/enemy.tscn
 res://Scenes/TestScene.tscn
+res://Scripts/test_scene.gd
+res://Scripts/enemy.gd
+res://Scenes/Car.tscn
+res://Scenes/enemy.tscn
 res://main_menu.tscn
+res://Scenes/countdown.tscn
+res://Scripts/global_variables.gd
+res://Scripts/countdown.gd
+res://Scripts/car.gd
