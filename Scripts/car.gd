@@ -1,18 +1,21 @@
 extends CharacterBody2D
 
-@export var rotation_speed := 1.5 #predkosc obrotu
-@export var speed := 400 #predkosc
-@export var acc := 200 #przyspieszenie
-@export var decc := 300 #zwalnianie
-
-@export var drift_sensibility := 0.5
-var rotation_max: float
-var rotation_min: float
-var car_velocity = Vector2()
+class_name player
 
 @onready var animation = $AnimatedSprite2D
 @onready var nitro_cooldown = $NitroCooldown
 @onready var drift_timer: = $DriftTimer
+
+@export var rotation_speed := 1.5 #predkosc obrotu
+@export var speed := 400 #predkosc
+@export var acc := 200 #przyspieszenie
+@export var decc := 300 #zwalnianie
+@export var drift_sensibility := 0.5
+@export var nitro_speed := 0
+
+var rotation_max: float
+var rotation_min: float
+var car_velocity = Vector2()
 
 var rotation_direction := 0 #kierunek obrotu
 var direction := 0 #kierunek
@@ -21,7 +24,7 @@ var nitro := 0 #input
 var can_nitro := true #czy moze uzyc nitro
 var nitro_comp := false #czy nitro jest naladowane
 
-@export var nitro_speed := 0
+var player_id: String = "Player"
 
 func _ready() -> void:
 	nitro_comp = false
@@ -66,14 +69,9 @@ func nitro_boost(movement_vector):
 func _process(_delta: float) -> void: #wszystko inne oprócz fizyki
 	GlobalVariables.drift_time_left = drift_timer.time_left
 	
-	
 	if StateMachine.current_state == StateMachine.States.DRIFTING: #pasek ladowania nitro
 		if drift_timer.is_stopped() and !nitro_comp:
 			drift_timer.start()
-			print("Starting drift timer, is_stopped:", drift_timer.is_stopped())
-			print("nitro_comp: ", nitro_comp)
-
-
 			
 		if not drift_timer.is_stopped():
 			var percent = ((1 - drift_timer.time_left / drift_timer.wait_time) * 100)
@@ -120,9 +118,6 @@ func _process(_delta: float) -> void: #wszystko inne oprócz fizyki
 		animation.stop()
 		
 
-		
-
-	
 func _on_timer_timeout() -> void: #nitro cooldown timer
 	can_nitro = true
 	nitro_comp = false

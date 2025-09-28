@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://mq1kfd4gipwk"]
 
-[ext_resource type="Script" uid="uid://dk3mjgxbgp417" path="res://main_menu.gd" id="1_7vrkn"]
+[ext_resource type="Script" uid="uid://dk3mjgxbgp417" path="res://Scripts/main_menu.gd" id="1_7vrkn"]
 [ext_resource type="FontFile" uid="uid://bsf4i6uq7hmtd" path="res://Fonts/upheaval/upheavtt.ttf" id="2_fu7sn"]
 [ext_resource type="Texture2D" uid="uid://o8i7kcjojv0j" path="res://Sprites/UI/Start-button3.png" id="2_glbon"]
 [ext_resource type="Texture2D" uid="uid://1o3yepi0xmbn" path="res://Sprites/UI/Start-button1.png" id="2_jix8l"]
@@ -22,10 +22,10 @@ script = ExtResource("1_7vrkn")
 
 [node name="Button" type="Button" parent="CanvasGroup"]
 texture_filter = 1
-offset_left = 250.0
-offset_top = 205.0
-offset_right = 409.0
-offset_bottom = 250.0
+offset_left = 238.0
+offset_top = 139.0
+offset_right = 394.0
+offset_bottom = 195.0
 theme_override_styles/hover = SubResource("StyleBoxTexture_qe12f")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_8qtwp")
 theme_override_styles/normal = SubResource("StyleBoxTexture_fu7sn")

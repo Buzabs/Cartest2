@@ -1,0 +1,6 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://d0thspspyv8qr"]
+
+[ext_resource type="Texture2D" uid="uid://6kgj4dtgoxih" path="res://Sprites/UI/you_lose.png" id="1_fbrcb"]
+
+[resource]
+texture = ExtResource("1_fbrcb")

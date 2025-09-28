@@ -1,0 +1,103 @@
+[gd_scene load_steps=9 format=3 uid="uid://dga762aqhp5a4"]
+
+[ext_resource type="Script" uid="uid://bgi6buttie4jm" path="res://Scripts/test_scene.gd" id="1_2ev0y"]
+[ext_resource type="Texture2D" uid="uid://d02o5owrvxdn4" path="res://Sprites/placeholders/trash-racetrack.png" id="2_0mev6"]
+[ext_resource type="PackedScene" uid="uid://dahoemngkgnt" path="res://Scenes/checkpoint.tscn" id="3_wwpa5"]
+[ext_resource type="PackedScene" uid="uid://cdoq37nysvx3y" path="res://Scenes/enemy.tscn" id="5_awm22"]
+[ext_resource type="PackedScene" uid="uid://cu0cc86ie5m6b" path="res://Scenes/countdown.tscn" id="6_vkllm"]
+[ext_resource type="PackedScene" uid="uid://b3ikvxqhn8yif" path="res://Scenes/player/lap_counter.tscn" id="7_jiero"]
+
+[sub_resource type="Curve2D" id="Curve2D_i6t4g"]
+_data = {
+"points": PackedVector2Array(0.826446, 87.6033, -0.826446, -87.6033, 115, 179, 0, 0, 0, 0, 202, 80, 0, 0, 0, 0, 843, 79, 16.5289, -141.322, -16.5289, 141.322, 932, 214, 56.1983, -80.9917, -56.1983, 80.9917, 913, 923, 33.0578, 47.1074, -33.0578, -47.1074, 123, 942, 0, 0, 0, 0, 115, 179)
+}
+point_count = 7
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i6t4g"]
+size = Vector2(20, 1045.5)
+
+[node name="Tutorial" type="Node"]
+script = ExtResource("1_2ev0y")
+
+[node name="PlayerStartPos" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(68, 302)
+
+[node name="Racetrack" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(512, 512)
+texture = ExtResource("2_0mev6")
+
+[node name="Checkpoints" type="Node" parent="."]
+
+[node name="Checkpoint" parent="Checkpoints" instance=ExtResource("3_wwpa5")]
+position = Vector2(506, -4)
+scale = Vector2(1, 7.63)
+
+[node name="Checkpoint2" parent="Checkpoints" instance=ExtResource("3_wwpa5")]
+position = Vector2(851, 476)
+scale = Vector2(9.215, 1)
+
+[node name="Checkpoint3" parent="Checkpoints" instance=ExtResource("3_wwpa5")]
+position = Vector2(515, 876)
+scale = Vector2(1, 7.63)
+
+[node name="Checkpoint4" parent="Checkpoints" instance=ExtResource("3_wwpa5")]
+position = Vector2(3, 486)
+scale = Vector2(9.215, 1)
+
+[node name="Enemy" parent="." groups=["Cars"] instance=ExtResource("5_awm22")]
+position = Vector2(130, 298)
+rotation = 4.71239
+collision_mask = 5
+
+[node name="Track" type="Path2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 0.134697)
+scale = Vector2(1, 0.998295)
+curve = SubResource("Curve2D_i6t4g")
+
+[node name="TrackFollow" type="PathFollow2D" parent="Track"]
+unique_name_in_owner = true
+position = Vector2(115, 179)
+rotation = -1.58023
+
+[node name="Collisions" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions"]
+polygon = PackedVector2Array(231, 149, 776, 145, 807, 153, 847, 201, 846, 826, 742, 880, 235, 878, 176, 821, 177, 204, 203, 162)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(0, 506.5)
+shape = SubResource("RectangleShape2D_i6t4g")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(516, 1033)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_i6t4g")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(513, -7)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_i6t4g")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(1033, 515.25)
+shape = SubResource("RectangleShape2D_i6t4g")
+
+[node name="Countdown" parent="." instance=ExtResource("6_vkllm")]
+position = Vector2(21, 249)
+
+[node name="LapCounter" parent="." instance=ExtResource("7_jiero")]
+position = Vector2(10, 235)
+scale = Vector2(8.355, 0.985)
+collision_layer = 2
+
+[node name="EnemyFinishLine" parent="." instance=ExtResource("7_jiero")]
+position = Vector2(10, 224)
+scale = Vector2(8.355, 0.985)
+collision_layer = 4
+collision_mask = 4
+
+[connection signal="body_entered" from="LapCounter" to="." method="_on_lap_counter_body_entered"]
+[connection signal="body_entered" from="EnemyFinishLine" to="Enemy" method="_on_enemy_finish_line_body_entered"]

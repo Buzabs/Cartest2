@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://ba5jvmp67t4pe"]
+
+[ext_resource type="Texture2D" uid="uid://cbnhprhk4shl7" path="res://Sprites/placeholders/big_track.png" id="1_cyc10"]
+[ext_resource type="Script" uid="uid://bgi6buttie4jm" path="res://Scripts/test_scene.gd" id="1_pyr6b"]
+[ext_resource type="PackedScene" uid="uid://dahoemngkgnt" path="res://Scenes/checkpoint.tscn" id="4_80sjd"]
+[ext_resource type="PackedScene" uid="uid://cu0cc86ie5m6b" path="res://Scenes/countdown.tscn" id="4_xktmk"]
+[ext_resource type="PackedScene" uid="uid://b3ikvxqhn8yif" path="res://Scenes/player/lap_counter.tscn" id="5_betkl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r4esi"]
+size = Vector2(197, 20)
+
+[node name="Node" type="Node"]
+script = ExtResource("1_pyr6b")
+
+[node name="BigTrack" type="Sprite2D" parent="."]
+position = Vector2(1284, 719)
+texture = ExtResource("1_cyc10")
+
+[node name="Countdown" parent="." instance=ExtResource("4_xktmk")]
+position = Vector2(197, 345)
+
+[node name="PlayerStartPos" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(244, 360)
+
+[node name="Checkpoints" type="Node" parent="."]
+
+[node name="Checkpoint" parent="Checkpoints" instance=ExtResource("4_80sjd")]
+position = Vector2(557, 210)
+scale = Vector2(1, 7.825)
+
+[node name="Checkpoint2" parent="Checkpoints" instance=ExtResource("4_80sjd")]
+position = Vector2(1654, 283)
+scale = Vector2(1, 6.335)
+
+[node name="Checkpoint3" parent="Checkpoints" instance=ExtResource("4_80sjd")]
+position = Vector2(1876, 743)
+scale = Vector2(8.075, 1)
+
+[node name="Checkpoint4" parent="Checkpoints" instance=ExtResource("4_80sjd")]
+position = Vector2(1391, 1014)
+scale = Vector2(1, 6.335)
+
+[node name="Checkpoint5" parent="Checkpoints" instance=ExtResource("4_80sjd")]
+position = Vector2(382, 932)
+scale = Vector2(8.075, 1)
+
+[node name="Checkpoint6" parent="Checkpoints" instance=ExtResource("4_80sjd")]
+position = Vector2(169, 497)
+scale = Vector2(8.075, 1)
+
+[node name="LapCounter" parent="." instance=ExtResource("5_betkl")]
+position = Vector2(138, 300)
+scale = Vector2(9.88, 1)
+
+[node name="EnemyFinishLine" type="Area2D" parent="."]
+position = Vector2(138, 293)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyFinishLine"]
+position = Vector2(98.5, 10)
+shape = SubResource("RectangleShape2D_r4esi")

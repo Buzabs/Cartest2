@@ -1,0 +1,113 @@
+[gd_scene load_steps=11 format=3 uid="uid://b0oo5p0g2r8w5"]
+
+[ext_resource type="Script" uid="uid://bgi6buttie4jm" path="res://Scripts/test_scene.gd" id="1_0apve"]
+[ext_resource type="Texture2D" uid="uid://bbv0rcvu7dviv" path="res://Sprites/placeholders/early_racetrack_test.png" id="2_ayax7"]
+[ext_resource type="PackedScene" uid="uid://cdoq37nysvx3y" path="res://Scenes/enemy.tscn" id="3_1jkbe"]
+[ext_resource type="PackedScene" uid="uid://dahoemngkgnt" path="res://Scenes/checkpoint.tscn" id="4_0qm5v"]
+[ext_resource type="PackedScene" uid="uid://b3ikvxqhn8yif" path="res://Scenes/player/lap_counter.tscn" id="5_yik5p"]
+[ext_resource type="PackedScene" uid="uid://cu0cc86ie5m6b" path="res://Scenes/countdown.tscn" id="6_pli8m"]
+
+[sub_resource type="Curve2D" id="Curve2D_5lt6y"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(-437.273, 80.9091, 437.273, -80.9091, 559, -16, -70.2948, -9.09091, 70.2948, 9.09091, 1349, -31, 0, 0, 0, 0, 1346.02, 4, 0, 0, 0, 0, 1330.16, 179, 0, 0, 0, 0, 1347.02, 390, 25.9443, -9.75, -25.9443, 9.75, 1338, 807, 0, 0, 0, 0, 1286.54, 812, 32.4872, 17.735, -32.4872, -17.735, 548, 814, -43.6188, 37.4, 43.6188, -37.4, 559, -16)
+}
+point_count = 9
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qsjrb"]
+size = Vector2(1038, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iufkg"]
+size = Vector2(630, 678)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c264a"]
+size = Vector2(197, 20)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_0apve")
+
+[node name="PlayerStartPos" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(489, 264)
+
+[node name="Racetrack" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(922, 398)
+texture = ExtResource("2_ayax7")
+
+[node name="Enemy" parent="." groups=["Cars"] instance=ExtResource("3_1jkbe")]
+position = Vector2(546, 263)
+rotation = 1.70065
+steer_force = 0.4
+look_ahead = 50
+num_rays = 16
+
+[node name="Track" type="Path2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-29, 13)
+scale = Vector2(1.00874, 1)
+curve = SubResource("Curve2D_5lt6y")
+
+[node name="TrackFollow" type="PathFollow2D" parent="Track"]
+unique_name_in_owner = true
+position = Vector2(909.143, 819.946)
+rotation = 3.12755
+progress = 2064.94
+
+[node name="Collisions" type="StaticBody2D" parent="."]
+collision_mask = 5
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(921, -124)
+shape = SubResource("RectangleShape2D_qsjrb")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(927, 920)
+shape = SubResource("RectangleShape2D_qsjrb")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(400, 391)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_qsjrb")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(1444, 391)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_qsjrb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(922, 398)
+shape = SubResource("RectangleShape2D_iufkg")
+
+[node name="Checkpoints" type="Node2D" parent="."]
+position = Vector2(894, -114)
+scale = Vector2(1, 8.69)
+
+[node name="Checkpoint" parent="Checkpoints" instance=ExtResource("4_0qm5v")]
+
+[node name="Checkpoint2" parent="Checkpoints" instance=ExtResource("4_0qm5v")]
+position = Vector2(344, 66.6283)
+scale = Vector2(9.83, 0.115075)
+
+[node name="Checkpoint3" parent="Checkpoints" instance=ExtResource("4_0qm5v")]
+position = Vector2(27, 97.4684)
+scale = Vector2(0.945, 1.02647)
+
+[node name="LapCounter" parent="." instance=ExtResource("5_yik5p")]
+position = Vector2(410, 162)
+scale = Vector2(9.88, 1)
+
+[node name="EnemyFinishLine" type="Area2D" parent="."]
+position = Vector2(410, 155)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyFinishLine"]
+position = Vector2(98.5, 10)
+shape = SubResource("RectangleShape2D_c264a")
+
+[node name="Countdown" parent="." instance=ExtResource("6_pli8m")]
+position = Vector2(432, 240)
+
+[connection signal="body_entered" from="LapCounter" to="." method="_on_lap_counter_body_entered"]
+[connection signal="body_entered" from="EnemyFinishLine" to="Enemy" method="_on_enemy_finish_line_body_entered"]

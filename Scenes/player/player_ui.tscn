@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://ba7q7ydjboneu"]
+
+[ext_resource type="FontFile" uid="uid://bsf4i6uq7hmtd" path="res://Fonts/upheaval/upheavtt.ttf" id="1_ohrjl"]
+
+[sub_resource type="SystemFont" id="SystemFont_dxtgh"]
+font_names = PackedStringArray("Upheaval TT (BRK)")
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qipxh"]
+bg_color = Color(0.309804, 0.882353, 0.94902, 1)
+
+[node name="PlayerUI" type="CanvasLayer"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="LapCount" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+anchors_preset = -1
+anchor_right = 0.239063
+anchor_bottom = 0.427778
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_colors/font_shadow_color = Color(0.735592, 0.82398, 1, 1)
+theme_override_fonts/normal_font = SubResource("SystemFont_dxtgh")
+theme_override_font_sizes/normal_font_size = 30
+metadata/_edit_use_anchors_ = true
+
+[node name="Bracket" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+anchors_preset = -1
+anchor_right = 0.179688
+anchor_bottom = 0.35
+offset_left = 486.0
+offset_right = 526.0
+offset_bottom = 40.0
+theme_override_fonts/normal_font = ExtResource("1_ohrjl")
+theme_override_font_sizes/normal_font_size = 30
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="NitroProgress" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -145.0
+offset_top = 2.0
+offset_right = 145.0
+offset_bottom = 31.0
+grow_horizontal = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_qipxh")
+show_percentage = false

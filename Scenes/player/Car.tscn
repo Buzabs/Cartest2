@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://b6pg70e8e06ln"]
+[gd_scene load_steps=11 format=3 uid="uid://b6pg70e8e06ln"]
 
 [ext_resource type="Texture2D" uid="uid://dwn44bcng11o1" path="res://Sprites/Cars/CarTuah.png" id="1_1k6jk"]
 [ext_resource type="Script" uid="uid://dt150cgkkt0b0" path="res://Scripts/car.gd" id="1_jbim0"]
-[ext_resource type="PackedScene" uid="uid://c4thsrccqukx" path="res://Scenes/trail.tscn" id="2_y2uan"]
-[ext_resource type="PackedScene" uid="uid://cdg1pp4q2osqf" path="res://Scenes/Exhaust2.tscn" id="3_qeqd0"]
+[ext_resource type="PackedScene" uid="uid://c4thsrccqukx" path="res://Scenes/player/trail.tscn" id="2_y2uan"]
+[ext_resource type="PackedScene" uid="uid://cdg1pp4q2osqf" path="res://Scenes/player/Exhaust2.tscn" id="3_qeqd0"]
+[ext_resource type="PackedScene" uid="uid://ba7q7ydjboneu" path="res://Scenes/player/player_ui.tscn" id="5_om1i1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1k6jk"]
 size = Vector2(13, 27)
@@ -33,10 +34,13 @@ animations = [{
 [sub_resource type="Gradient" id="Gradient_gvgjh"]
 colors = PackedColorArray(0, 0, 0, 0, 0.0862745, 0.0862745, 0.0862745, 1)
 
-[node name="Car" type="CharacterBody2D"]
+[node name="Car" type="CharacterBody2D" groups=["Cars"]]
 collision_mask = 7
 script = ExtResource("1_jbim0")
 nitro_speed = 50
+
+[node name="Camera" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
 
 [node name="NitroCooldown" type="Timer" parent="."]
 process_callback = 0
@@ -75,6 +79,9 @@ width = 5.0
 gradient = SubResource("Gradient_gvgjh")
 
 [node name="CPUParticles2D" parent="TrialPoint2" instance=ExtResource("3_qeqd0")]
+
+[node name="PlayerUI" parent="." instance=ExtResource("5_om1i1")]
+unique_name_in_owner = true
 
 [connection signal="timeout" from="NitroCooldown" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="DriftTimer" to="." method="_on_drift_timer_timeout"]

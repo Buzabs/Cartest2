@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://b27ro1wimoeyt"]
+
+[ext_resource type="Texture2D" uid="uid://bygyavopt0p8" path="res://Sprites/UI/you_win.png" id="1_kojir"]
+[ext_resource type="Script" uid="uid://bbhs2t6c012wn" path="res://Scripts/end_screen.gd" id="2_adwl3"]
+[ext_resource type="Texture2D" uid="uid://6ann6o2c1go7" path="res://Sprites/UI/restart1.png" id="3_rujxl"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ntrcx"]
+texture = ExtResource("1_kojir")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b1uef"]
+texture = ExtResource("3_rujxl")
+
+[node name="RaceEnd" type="CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="."]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -309.0
+offset_top = -122.0
+offset_right = 307.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ntrcx")
+script = ExtResource("2_adwl3")
+
+[node name="Button" type="Button" parent="."]
+texture_filter = 1
+offset_left = 235.0
+offset_top = 167.0
+offset_right = 243.0
+offset_bottom = 175.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_b1uef")

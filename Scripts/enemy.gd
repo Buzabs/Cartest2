@@ -4,12 +4,13 @@ extends CharacterBody2D
 @export var steer_force := 0.2
 @export var look_ahead := 100
 @export var num_rays := 8
+@export var id: String 
 
 var ray_directions = []
 var interest = []
 var danger = [] 
 
-var id: String = "Enemy1"
+var Level = level.new()
 
 var laps: int = 0
 
@@ -17,7 +18,7 @@ var direction := Vector2.ZERO
 var acc := Vector2.ZERO
 
 func _ready() -> void:
-	laps = 0
+	laps = -1
 	interest.resize(num_rays)
 	danger.resize(num_rays)
 	ray_directions.resize(num_rays)
@@ -71,7 +72,7 @@ func choose_direction():
 
 func _on_enemy_finish_line_body_entered(_body: Node2D) -> void:
 	laps += 1
-	if laps == GlobalVariables.max_laps and id not in GlobalVariables.bracket:
-		GlobalVariables.bracket.append(id)
-		GlobalVariables.race_finished.emit()
-	print("Enemy reached finish line")
+	GlobalVariables.add_to_bracket(id, laps)
+	print("Enemy laps: ", laps)
+	
+	
